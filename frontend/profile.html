@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog WebApp</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://kit.fontawesome.com/ca49e0f9c1.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        #avatar-preview img{
+            border-radius: 50%;
+        }
+        #avatar-preview{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        section{
+            margin-top: 0;
+        }
+        .box_highlight{
+            display: inline-block;
+            padding:5px 10px;
+            border-radius: 0.5rem;
+            background-color: rgba(87, 87, 87, 0.759);
+            color: aliceblue;
+        }
+        #profile_cont{
+          padding-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="overlay" style="display: none;">
+      <i class="fa-solid fa-spinner fa-spin" style="font-size: 5rem;"></i>
+    </div>
+
+    <section class="form_section">
+        <div class="container form_section-container" id="profile_cont">
+          <h2>Update Profile</h2>
+          <div class="alert_message error" id="error-message" style="display:none;"></div>
+          <div class="alert_message success" id="success-message" style="display:none;"></div>
+          <form id="signup-form" enctype="multipart/form-data">
+            <div id="avatar-preview">
+              <img 
+                src="./images/default-avatar.jpg" 
+                alt="Current Avatar" 
+                id="avatar-img-preview" 
+                style="width: 100px;height: 100px;">
+            </div>
+            <p>Username : &nbsp;<span class="box_highlight" id="username"></span></p>
+            <p>Email : &nbsp;<span class="box_highlight" id="email"></span></p>
+            <p>Role : &nbsp;<span class="box_highlight" id="role"></span></p>
+            <input type="text" id="firstname" name="firstname" placeholder="First Name" >
+            <input type="text" id="lastname" name="lastname" placeholder="Last Name">
+            <div>
+                <input type="checkbox" id="change_password" style="align-self: flex-start;">
+                <label for="change_password" >Change Password</label>
+            </div>
+            
+            <input type="password" id="password-fields1" style="display: none;" name="password" placeholder="Password" >
+            <input type="password" id="password-fields2" style="display: none;" name="confirmPassword" placeholder="Confirm Password" >
+            
+            <div class="form_control item-center">
+                <label for="avatar">User Avatar</label>
+                <!-- <div id="avatar-preview">
+                  <img 
+                    src="./images/default-avatar.jpg" 
+                    alt="Current Avatar" 
+                    id="avatar-img-preview" 
+                    style="width: 100px;height: 100px;">
+                </div> -->
+                <button type="button" id="revert-avatar" class="btn" style="display: none;">Revert to Original Avatar</button>
+                <h5>Change avatar if you want!!</h5>
+                <input type="file" id="avatar" name="avatar" accept="image/*">
+             </div>
+            <button type="submit" class="btn">Update</button>
+          </form>
+        </div>
+      </section>
+
+
+</body>
+
+
+<script>
+
+
+const errorMessage = document.getElementById("error-message");
+const successMessage = document.getElementById("success-message");
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const form = document.getElementById("signup-form");
+  const avatarInput = document.getElementById("avatar");
+  const avatarPreview = document.getElementById("avatar-img-preview");
+  const revertButton = document.getElementById("revert-avatar");
+  const changePasswordCheckbox = document.getElementById("change_password");
+  const passwordFields1 = document.getElementById("password-fields1");
+  const passwordFields2 = document.getElementById("password-fields2");
+
+  const user_data = JSON.parse(localStorage.getItem("user"))
+  const userId = user_data.uid; // Replace with actual user ID from session or auth token
+  let originalAvatarURL = avatarPreview.src; // Save the original avatar URL
+
+  // Fetch user data and populate form
+  try {
+    const response = await fetch(`http://localhost:5000/user-profile/${userId}`);
+    if (!response.ok) throw new Error("Failed to fetch user data");
+
+    const userData  = await response.json();
+
+    // Populate form fields
+    document.getElementById("firstname").value = userData.firstname || "";
+    document.getElementById("lastname").value = userData.lastname || "";
+    document.getElementById("username").innerText = userData.username || "";
+    document.getElementById("email").innerText = userData.email || "";
+    document.getElementById("role").innerText = userData.usertype || "";
+    avatarPreview.src = userData.avatar || "";
+    originalAvatarURL = userData.avatar || originalAvatarURL; // Update original avatar if needed
+
+  } catch (error) {
+    console.error("Error loading user data:", error);
+    showErrorMsg("Error loading user data.");
+  }
+
+  // Handle avatar input change
+  avatarInput.addEventListener("change", () => {
+    const file = avatarInput.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        avatarPreview.src = e.target.result; // Show preview of the uploaded image
+        revertButton.style.display = "inline-block"; // Show the revert button
+      };
+    }
+  });
+
+  // Revert to the original avatar
+  revertButton.addEventListener("click", () => {
+    avatarPreview.src = originalAvatarURL; // Reset to the original avatar
+    avatarInput.value = ""; // Clear the file input
+    revertButton.style.display = "none"; // Hide the revert button
+  });
+
+  // Toggle password fields visibility
+  changePasswordCheckbox.addEventListener("change", () => {
+    if (changePasswordCheckbox.checked) {
+      passwordFields1.style.display = "block"; // Show password fields
+      passwordFields2.style.display = "block"; // Show password fields
+    } else {
+      passwordFields1.style.display = "none"; // Hide password fields
+      passwordFields2.style.display = "none"; // Hide password fields
+    }
+  });
+
+
+  // Handle form submission
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    // Password validity check (if "Change Password" checkbox is checked)
+    const password = (formData.get("password")).trim();
+    const confirmPassword = (formData.get("confirmPassword")).trim();
+
+    if (changePasswordCheckbox.checked) {
+        if (!isPasswordValid(password, confirmPassword)) return;        
+    }else{
+        // Remove password and confirmPassword fields if the checkbox is not checked
+        formData.delete("password");
+        formData.delete("confirmPassword");
+    }
+
+    formData.append("userId", userId);
+    console.log(formData.get('avatar'));
+    
+
+    // // Clear previous messages
+    clearMsg();
+    console.log(formData);
+        
+    document.getElementById('overlay').style.display = 'flex';
+
+    try {
+      const response = await fetch("http://localhost:5000/update-profile", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        showSuccessMsg(data.message || "Profile updated successfully!");
+        // Update avatar preview if changed
+        if (data.updatedFields?.avatar) {
+          avatarPreview.src = data.updatedFields.avatar;
+          originalAvatarURL = data.updatedFields.avatar;
+        }        
+
+      } else {
+        showErrorMsg(data.message || "Failed to update profile.");
+      }
+      revertButton.style.display = "none";
+
+    } catch (error) {
+      console.error(error);
+      showErrorMsg("An error occurred. Please try again.");
+      revertButton.style.display = "none";
+      // document.getElementById('overlay').style.display = 'none';
+    }
+    document.getElementById('overlay').style.display = 'none';
+
+  });
+});
+
+
+function isPasswordValid(password,confirmPassword) {
+    if (password.length < 6) {
+      showErrorMsg("Password must be at least 6 characters long.");
+      return false;
+    }
+    if (password !== confirmPassword) {
+      showErrorMsg("Passwords do not match.")
+      return false;
+    }
+
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    console.log('password=> ',password);    
+    if (!passwordPattern.test(password)) {
+      showErrorMsg("Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character. @$!%*?&");
+      return false;
+    }
+
+    return true;
+}
+
+function showErrorMsg(msg) {
+  successMessage.style.display = "none";  
+  errorMessage.textContent = msg;
+  errorMessage.style.display = "block";  
+  focusOn(errorMessage);
+}
+
+function showSuccessMsg(msg) {
+  errorMessage.style.display = "none";
+  successMessage.textContent = msg;
+  successMessage.style.display = "block";
+  focusOn(successMessage);
+}
+
+function clearMsg() {
+   // Clear previous messages
+  errorMessage.style.display = "none";
+  successMessage.style.display = "none";
+}
+
+
+function focusOn(focusElement) {    
+    if (focusElement) {
+      focusElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+</script>
+
+</html>

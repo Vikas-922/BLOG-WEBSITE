@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog WebApp</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://kit.fontawesome.com/ca49e0f9c1.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="overlay">
+    <i class="fa-solid fa-spinner fa-spin" style="font-size: 5rem;"></i>
+</div>
+
+    <nav>        
+        <div class="container nav_container">
+            <a href="index.html" class="nav_logo">BlogMedia</a>
+            <ul class="nav_items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li class="nav_profile" style="display: none;">
+                    <div class="avatar_container">
+                        <div class="avatar">
+                            <img src="./images/avatar1.jpg" alt="User Avatar">
+                        </div>
+                    </div>
+                    <div class="username_cnt">
+                        <span></span>
+                    </div>
+                    <ul class="nav_profile_popup">
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="logout.html">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open_nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close_nav-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+
+    <section class="form_section">
+        <div class="container form_section-container">
+          <h2>Edit Post</h2>
+          <div class="alert_message" id="alertMessage" style="display: none;">
+            <p id="alertText"></p>
+          </div>
+          <form id="editPostForm" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Title" required>
+            <select name="category" id="categorySelect" required>
+              
+            </select>
+            <textarea name="content" rows="10" placeholder="Body" required></textarea>
+            <div class="form_control inline">
+              <input type="checkbox" id="is_featured" name="isFeatured" style="visibility: hidden;">
+              <label for="is_featured" style="visibility: hidden;">Featured</label>
+            </div>
+            <div class="form_control">
+              <label for="thumbnail">Change Thumbnail</label>
+              <input type="file" id="thumbnail" name="thumbnail">
+            </div>
+            <!-- <div class="form_control">
+              <label for="created_at">Created At</label>
+              <input type="datetime-local" id="created_at" name="created_at">
+            </div> -->
+            <button type="submit" class="btn">Update Post</button>
+          </form>
+        </div>
+      </section>
+      
+<footer>
+    <div class="footer_socials">
+        <a href="https://youtube.com"><li class="uil uil-youtube"></li></a>
+        <a href="https://facebook.com"><li class="uil uil-facebook-f"></li></a>
+        <a href="https://instagram.com"><li class="uil uil-instagram-alt"></li></a>
+        <a href="https://linkedin.com"><li class="uil uil-linkedin"></li></a>
+        <a href="https://tiwtter.com"><li class="uil uil-twitter"></li></a>
+    </div>
+    <div class="container footer_container">
+        <article>
+            <h4>Categories</h4>
+            <ul>
+                <li><a href="category-posts2.html">Artificial Intelligence</a></li>
+                <li><a href="category-posts4.html">Stock Market</a></li>
+                <li><a href="category-posts5.html">Renewable Energy</a></li>
+                <li><a href="category-posts6.html">Electric Vehicles</a></li>
+                <li><a href="category-posts9.html">Recycling E-waste</a></li>
+                <li><a href="category-posts7.html">Sports</a></li>
+            </ul>
+        </article>
+        <article>
+            <h4>Support</h4>
+            <ul>
+                <li><a href="contact.html">Call Numbers</a></li>
+                <li><a href="contact.html">Emails</a></li>
+            </ul>
+        </article>
+        <article>
+            <h4>Blog</h4>
+            <ul>
+                <li><a href="popular.html">Popular</a></li>
+                <li><a href="index.html">Categories</a></li>
+            </ul>
+        </article>
+        <article>
+            <h4>Permalinks</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contacts</a></li>
+            </ul>
+        </article>
+    </div>
+    <div class="footer_copyright">
+        <small>Copyright &copy; 2024 BlogMedia</small>
+    </div>
+</footer>
+
+<!-- <script src="./main.js"></script> -->
+
+<!-- <script src="./main.js"></script> -->
+<script src="./nav.js"></script>
+
+<script>
+
+const currentUser = JSON.parse(localStorage.getItem("user"));
+
+async function fetchCategories() {
+    try {
+        const response = await fetch('http://localhost:5000/categories');
+        if (!response.ok) throw new Error('Failed to fetch categories');
+
+        const categories = await response.json();
+        const categorySelect = document.getElementById('categorySelect');
+
+        // Clear existing options and populate new ones
+        categorySelect.innerHTML = '';
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category.title; // Assuming category is a string
+            option.textContent = category.title;
+            categorySelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        showAlert("Error loading categories.");
+    }
+}
+
+
+
+async function loadPostForEditing() {
+  const params = new URLSearchParams(window.location.search);
+  const postId = params.get("id");
+  if (!postId) {
+    showAlert("Invalid post ID.","error");
+    // alert("Invalid post ID.");
+    return;
+  }
+
+  try {
+    const response = await fetch(`http://localhost:5000/get-post/${postId}`);
+    if (!response.ok) throw new Error("Failed to fetch post data");
+
+    const post = await response.json();
+
+    // Populate the form fields
+    document.querySelector('input[name="title"]').value = post.title;
+    document.querySelector('select[name="category"]').value = post.category;
+    document.querySelector('textarea[name="content"]').value = post.content;
+    document.querySelector('input[name="isFeatured"]').checked = post.isFeatured;
+
+    const userData = JSON.parse(localStorage.getItem("user"));
+
+    document.querySelector('input[name="isFeatured"]').style.visibility = userData.dashboardPage === "dashboard.html"
+                                                                  ? 'hidden' : 'visible';
+    document.querySelector('label[for="is_featured"]').style.visibility = userData.dashboardPage === "dashboard.html"
+                                                                  ? 'hidden' : 'visible';
+
+//////////>>>>>>
+    // Convert UTC created_at to IST and set the value
+    // const istDate = convertToIST(post.created_at); // Convert UTC to IST
+    // document.querySelector('input[name="created_at"]').value = istDate.slice(0, 16); // Set in input
+
+
+    // Store postId for the update
+    document.querySelector("#editPostForm").dataset.postId = postId;
+  } catch (error) {
+    console.error("Error loading post for editing:", error);
+    showAlert("Failed to load post.","error");
+    // alert("Failed to load post.");
+  }
+}
+
+async function handleUpdatePost(event) {
+  event.preventDefault();
+  document.getElementById('overlay').style.display = 'flex';
+
+  const form = event.target;
+  const postId = form.dataset.postId;
+  const formData = new FormData(form);
+
+  // ENABLE TO EDIT POST'S CREATED DATE
+////////////////DELETE/////////////DELETE/////////////////DELETE
+//   const createdAt = document.querySelector('input[name="created_at"]').value; // Get the date from input field
+//  // Store original date when loading the post
+
+//   // If the created_at value is the same, do not append it to the formData
+  
+//     const utcDate = convertToUTC(createdAt);
+//     formData.set("created_at", utcDate); // Set the converted UTC date
+  
+//////////////DELETE//////////DELETE//////////////////DELETE/////////////////
+  // Retrieve user details from local storage
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user || !user.uid) {
+    showAlert("User not authenticated. Please log in.","error");
+    // alert("User not authenticated. Please log in.");
+    return;
+  }
+
+  formData.append("uid", user.uid);
+  console.log('formData.isFeatured',document.querySelector('input[name="isFeatured"]').checked);
+  formData.set("isFeatured",document.querySelector('input[name="isFeatured"]').checked == true ? true : false);
+  
+
+  try {
+    const response = await fetch(`http://localhost:5000/update-post/${postId}`, {
+      method: "PUT",
+      body: formData,
+    });
+    console.log(response.status);
+    
+    if (!response.ok) {
+      if (response.status === 403) {
+        // alert("You are not authorized to update this post.");
+        showAlert("You are not authorized to update this post.","error")
+      } else if (response.status === 404) {
+        showAlert("Post not found.","error");
+        // alert("Post not found.");
+      } else {
+        throw new Error("Failed to update post")
+      }       
+      return;
+    }
+
+    // alert("Post updated successfully.");
+    showAlert("Post updated successfully.","success")
+    setTimeout(() => {
+        window.location.href = `./${currentUser.dashboardPage}`; // Redirect to dashboard
+    }, 2200);
+  } catch (error) {
+    console.error("Error updating post:", error);
+    // alert("Failed to update post.");
+    showAlert("Failed to update post.","error")
+  }
+  document.getElementById('overlay').style.display = 'none';
+}
+
+
+document.querySelector("#editPostForm").addEventListener("submit", handleUpdatePost);
+document.addEventListener('DOMContentLoaded', fetchCategories);
+document.addEventListener("DOMContentLoaded", loadPostForEditing);
+
+
+function showAlert(message, type = "error") {
+  alertMessage.style.display = "block";
+  alertMessage.className = `alert_message ${type}`; // Apply class based on type (e.g., "error" or "success")
+  alertText.textContent = message;
+  focusOnAlert();
+
+  setTimeout(() => {
+    alertMessage.style.display = "none";
+  }, 5000);
+}
+
+function focusOnAlert() {
+    const alertMessage = document.getElementById('alertMessage');
+    if (alertMessage) {
+        alertMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+
+function convertToUTC(istDate) {
+  const date = new Date(istDate); // Create a date object from the IST value
+  const utcDate = new Date(date.toLocaleString('en-US', { timeZone: 'UTC' })); // Convert to UTC
+  return utcDate.toISOString(); // Return in ISO format (UTC)
+}
+
+function convertToIST(utcDate) {
+  const date = new Date(utcDate); // Create a date object from UTC
+  const istDate = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })); // Convert to IST
+  return istDate.toISOString(); // Return in IST
+}
+
+</script>
+</body>
+</html>

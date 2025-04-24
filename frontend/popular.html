@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog WebApp</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://kit.fontawesome.com/ca49e0f9c1.js" crossorigin="anonymous"></script>    
+    <script defer src="./nav.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>        
+        <div class="container nav_container">
+            <a href="index.html" class="nav_logo">BlogMedia</a>
+            <ul class="nav_items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="category-posts.html?category=Artificial Intelligence">Categories</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li class="nav_profile" style="display: none;">
+                    <div class="avatar_container">
+                        <div class="avatar">
+                            <img src="./images/avatar1.jpg" alt="User Avatar">
+                        </div>
+                    </div>
+                    <div class="username_cnt">
+                        <span></span>
+                    </div>
+                    <ul class="nav_profile_popup">
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="logout.html">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open_nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close_nav-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+
+
+
+
+
+    <header class="category_title popular_heading">
+        <h2>Popular Blogs</h2>
+    </header>
+
+    <section class="posts">
+    <div class="container posts_container">
+    
+    </div>
+    <div class="container flex-center">
+        <button class="btn sm" style="font-size: 0.9rem;">See more</button>
+    </div>
+    </section>
+
+    <section class="posts skeleton" id="posts-skeleton">
+        <div class="container posts_container">
+            <!-- Repeat Skeleton Articles -->
+            <article class="post">
+                <div class="post_thumbnail skeleton-box"></div>
+                <div id="post-meta">
+                    <div class="skeleton-box" style="width: 80px; height: 20px;"></div>
+                    <div class="skeleton-box" style="width: 80px; height: 20px;"></div>
+                    <div class="skeleton-box" style="width: 80px; height: 20px;"></div>
+                </div>
+                <div class="post_info">
+                    <div class="skeleton-box" style="width: 60%; height: 20px;"></div>
+                    <h3 class="skeleton-box" style="height: 30px; width: 70%;"></h3>
+                    <p class="skeleton-box" style="height: 60px; width: 90%;"></p>
+                    <div class="post_author">
+                        <div class="post_author-avatar skeleton-box"></div>
+                        <div class="post_author-info">
+                            <div class="skeleton-box" style="height: 20px; width: 100%;"></div>
+                            <div class="skeleton-box" style="height: 15px; width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- Add more skeleton articles as needed -->
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="category_buttons">
+        <div class="container category_buttons-container">
+            <a href="category-posts.html?category=Artificial Intelligence" class="category_button">Artificial Intelligence</a>
+            <a href="category-posts.html?category=Renewable Energy" class="category_button">Renewable Energy</a>
+            <a href="category-posts.html?category=Electric Vehicles" class="category_button">Electric Vehicles</a>
+            <a href="category-posts.html?category=Stock Market" class="category_button">Stock Market</a>
+            <a href="category-posts.html?category=Recycling E-waste" class="category_button">Recycling E-waste</a>
+            <a href="category-posts.html?category=Sports" class="category_button">Sports</a>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer_socials">
+            <a href="https://youtube.com"><li class="uil uil-youtube"></li></a>
+            <a href="https://facebook.com"><li class="uil uil-facebook-f"></li></a>
+            <a href="https://instagram.com"><li class="uil uil-instagram-alt"></li></a>
+            <a href="https://linkedin.com"><li class="uil uil-linkedin"></li></a>
+            <a href="https://tiwtter.com"><li class="uil uil-twitter"></li></a>
+        </div>
+        <div class="container footer_container">
+            <article>
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="category-posts2.html">Artificial Intelligence</a></li>
+                    <li><a href="category-posts4.html">Stock Market</a></li>
+                    <li><a href="category-posts5.html">Renewable Energy</a></li>
+                    <li><a href="category-posts6.html">Electric Vehicles</a></li>
+                    <li><a href="category-posts9.html">Recycling E-waste</a></li>
+                    <li><a href="category-posts7.html">Sports</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Call Numbers</a></li>
+                    <li><a href="contact.html">Emails</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Blog</h4>
+                <ul>
+                    <li><a href="popular.html">Popular</a></li>
+                    <li><a href="category-posts.html?category=Artificial Intelligence">Categories</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Permalinks</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </article>
+        </div>
+        <div class="footer_copyright">
+            <small>Copyright &copy; 2024 BlogMedia</small>
+        </div>
+    </footer>
+
+
+
+
+
+
+<!-- <script src="./main.js"></script> -->
+
+<script>
+// *** [sortByPopularity] MAIN ALGORITHM 
+
+const postsContainer = document.querySelector(".posts_container");
+const postsSection = document.querySelector(".posts");
+
+let globalPosts = []; // To store fetched posts
+let currentIndex = 0; // Track the current position in the posts array
+const postsPerPage = 9; // Number of posts to display initially or on each click
+
+addSkeletonArticles(3);
+
+// Function to fetch posts
+async function fetchPosts() {
+  const postsSkeleton = document.getElementById("posts-skeleton");
+  postsSection.style.display = "none";
+
+  try {
+    const response = await fetch("http://localhost:5000/get-publicPosts");
+    if (!response.ok) throw new Error("Failed to fetch posts");
+
+    const posts = await response.json();
+    console.log(posts);
+    
+    localStorage.setItem("posts", JSON.stringify(posts));
+
+    postsSkeleton.style.display = "none";
+    // Show real content sections
+    postsSection.style.display = "block";
+
+    initalPostsLoad();
+    // console.log(posts);
+    
+    // displayPosts(posts);   ///////
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    postsContainer.innerHTML = `<p>Failed to load posts. Please try again later.</p>`;
+  }
+}
+
+
+
+
+
+const seeMoreButton = document.querySelector(".btn.sm");
+
+// Function to load more posts
+function loadMorePosts(isLoadTillCurrentIndex=false) {
+    //ensure the argument is a boolean and not an event object
+    if (typeof isLoadTillCurrentIndex !== "boolean") {
+        isLoadTillCurrentIndex = false; // Handle unexpected event object
+    }
+    const nextPosts = globalPosts.slice(currentIndex, currentIndex + postsPerPage);
+    displayPosts(nextPosts);
+    if(!isLoadTillCurrentIndex) currentIndex += postsPerPage;
+    console.log('currentIndex',currentIndex,'isLoadTillCurrentIndex',isLoadTillCurrentIndex);
+
+    // Hide "See More" button if all posts are loaded
+    if (currentIndex >= globalPosts.length) {
+        seeMoreButton.style.display = "none";
+    }
+}
+
+
+// Initial setup on DOMContentLoaded
+function initalPostsLoad() {
+    postss = getPostsFromLocalStorage();
+  if (postss.length > 0) {
+    globalPosts = sortByPopularity(postss);
+    loadMorePosts(globalPosts); // Display the initial set of posts
+  } else {
+    postsContainer.innerHTML = `<p>No posts available.</p>`;
+    seeMoreButton.style.display = "none"; // Hide button if no posts
+  }
+}
+
+
+// Fetch posts from localStorage
+function getPostsFromLocalStorage() {
+  const posts = localStorage.getItem("posts");
+  return posts ? JSON.parse(posts) : [];
+}
+
+
+// Function to display posts
+function displayPosts(posts) {
+//   postsContainer.innerHTML = ""; // Clear existing content
+
+  posts.forEach((post) => {
+    const postElement = document.createElement("article");
+    postElement.classList.add("post");
+
+    postElement.innerHTML = `
+        <div class="post_thumbnail">
+          <a href="post.html?id=${post.id}">
+          <img src="${post.thumbnailURL || './images/blog27.jpg'}" alt="Post Thumbnail">
+          </a>
+        </div>
+        <div id="post-meta">
+            <div id="view-count"><i class="fa-solid fa-eye"></i><span id="views">${post.views}</span></div>
+            <div id="like-count"><i class="fa-solid fa-thumbs-up"></i><span id="likes">${post.likes}</span></div>
+            <div id="comment-count"><i class="fa-solid fa-comment-dots"></i><span id="comments">${post.commentsCount}</span></div>
+        </div>
+        <div class="post_info">
+        <a href="category-posts.html?category=${encodeURIComponent(post.category)}" class="category_button">
+          ${post.category}
+        </a>
+        <h3 class="post_title">
+          <a href="post.html?id=${post.id}">${post.title}</a>
+        </h3>
+        <p class="post_body">
+          ${post.content.substring(0, 300)}... <!-- Truncate content for preview -->
+        </p>
+        <div class="post_author">
+          <div class="post_author-avatar">
+            <img src="${post.authorAvatar || './images/default-avatar.jpg'}" alt="Author Avatar">
+          </div>
+          <div class="post_author-info">
+            <h5>By: ${post.authorName || "Unknown Author"}</h5>
+            <small>${formatDate(post.created_at)}</small>
+          </div>
+        </div>
+      </div>
+    `;
+
+    postsContainer.appendChild(postElement);
+  });
+}
+
+
+function sortByPopularity(posts) {
+    return posts.sort((a, b) => {
+        // Calculate popularity score (weighted sum of likes, views, and commentsCount)
+        const scoreA = (a.likes * 2) + (a.views * 1.5) + (a.commentsCount * 3);
+        const scoreB = (b.likes * 2) + (b.views * 1.5) + (b.commentsCount * 3);
+        
+        return scoreB - scoreA; // Sort in descending order of popularity
+    });
+}
+
+
+function formatDate(isoString) {
+  const date = new Date(isoString);
+
+  // Options for formatting the date
+  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = date.toLocaleDateString('en-US', dateOptions);
+
+  // Options for formatting the time
+  const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
+  const formattedTime = date.toLocaleTimeString('en-US', timeOptions);
+
+  return `${formattedDate} - ${formattedTime}`;
+}
+
+
+
+function addSkeletonArticles(count) {
+  const postsSkeleton = document.querySelector("#posts-skeleton .posts_container");
+  if (!postsSkeleton) {
+    console.error("Skeleton container not found");
+    return;
+  }
+
+  // Clear existing skeleton articles (optional)
+  postsSkeleton.innerHTML = "";
+
+  // Create and append the specified number of skeleton articles
+  for (let i = 0; i < count; i++) {
+    const skeletonArticle = `
+      <article class="post">
+        <div class="post_thumbnail skeleton-box"></div>
+        <div id="post-meta">
+          <div class="skeleton-box" style="width: 80px; height: 20px;"></div>
+          <div class="skeleton-box" style="width: 80px; height: 20px;"></div>
+          <div class="skeleton-box" style="width: 80px; height: 20px;"></div>
+        </div>
+        <div class="post_info">
+          <div class="skeleton-box" style="width: 60%; height: 20px;"></div>
+          <h3 class="skeleton-box" style="height: 30px; width: 70%;"></h3>
+          <p class="skeleton-box" style="height: 60px; width: 90%;"></p>
+          <div class="post_author">
+            <div class="post_author-avatar skeleton-box"></div>
+            <div class="post_author-info">
+              <div class="skeleton-box" style="height: 20px; width: 100%;"></div>
+              <div class="skeleton-box" style="height: 15px; width: 90%;"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+
+    postsSkeleton.innerHTML += skeletonArticle;
+  }
+}
+
+
+// Fetch posts on page load
+fetchPosts();
+
+
+</script>
+
+</body>
+</html>

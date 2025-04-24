@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog WebApp</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://kit.fontawesome.com/ca49e0f9c1.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>        
+        <div class="container nav_container">
+            <a href="index.html" class="nav_logo">BlogMedia</a>
+            <ul class="nav_items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li class="nav_profile" style="display: none;">
+                    <div class="avatar_container">
+                        <div class="avatar">
+                            <img src="./images/avatar1.jpg" alt="User Avatar">
+                        </div>
+                    </div>
+                    <div class="username_cnt">
+                        <span></span>
+                    </div>
+                    <ul class="nav_profile_popup">
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="logout.html">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open_nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close_nav-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+
+    <section class="singlepost">
+        <div class="container singlepost_container">
+            <!-- <h2> Recycle Your E-waste</h2>
+            <div class="post_author">
+                <div class="post_author-avatar">
+                    <img src="./images/avatar10.jpg">
+                </div>
+                <div class="post_author-info">
+                    <h5>By: Harsh Patil</h5>
+                    <small>September 11, 2024 - 21:07</small>
+                </div>
+            </div>
+            <div class="singlepost_thumbnail">
+                <img src="./images/blog9.jpg">
+            </div>
+            <div id="post-meta">
+                <div id="view-count"><i class="fa-solid fa-eye"></i><span id="views"> 0</span></div>
+                <div id="like-count"><i class="fa-solid fa-thumbs-up"></i><span id="likes"> 0</span></div>
+                <div id="comment-count"><i class="fa-solid fa-comment-dots"></i><span id="comments"> 0</span></div>
+            </div>
+            <p>
+                In our rapidly advancing digital age, e-waste—discarded electronic devices like smartphones, laptops, and batteries—has become one of the fastest-growing waste streams. Recycling e-waste is not just an environmental imperative but a gateway to a circular economy. By properly recycling these gadgets, we recover precious metals and reduce harmful pollutants, transforming what was once electronic clutter into valuable resources. Imagine turning your old phone into a new device or a piece of jewelry; it's like giving technology a second life. Embracing e-waste recycling means we’re not only cleaning up our planet but also making a statement: technology’s lifecycle should be as innovative as the tech itself.
+            </p>
+            <p>                
+                Recycling e-waste is an increasingly crucial practice in the modern world, addressing both environmental and health concerns associated with discarded electronic devices. As technology advances and new gadgets emerge, old electronics—ranging from smartphones to laptops—are often abandoned, accumulating in landfills where they can leach harmful substances like lead, mercury, and cadmium into the soil and water.   
+            </p>
+            <p>
+                By recycling e-waste, these toxic materials can be safely managed and repurposed, reducing their environmental impact and conserving valuable resources. Moreover, recycling helps to recover precious metals such as gold, silver, and rare earth elements, which are integral to the production of new electronic devices. This process not only minimizes waste but also supports a circular economy where materials are continuously reused.
+            </p>
+            <p>
+                Engaging in responsible e-waste recycling involves finding certified e-waste recycling facilities or participating in take-back programs offered by manufacturers and retailers. In doing so, individuals contribute to a healthier planet and promote sustainable technological progress, making a significant difference in the stewardship of our electronic footprint.
+            </p> -->
+        </div>
+    </section>
+
+    <section>
+        <div id="comments-section" class="container singlepost_container">
+            <h3>Comments (<span id="commentCount"></span>)</h3>
+        
+            <!-- Scrollable Comments List -->
+            <div id="comments-list">
+                <!-- <div class="comment">
+                    <div class="comment-header">
+                        <img src="https://via.placeholder.com/40" alt="Avatar" class="comment-avatar">
+                        <div>
+                            <span class="comment-author">John Doe</span>
+                            <span class="comment-date">Dec 31, 2024</span>
+                        </div>
+                    </div>
+                    <p class="comment-text">This is a great blog post! I learned a lot. Thanks for sharing.</p>
+                </div> -->
+                <!-- <div class="comment">
+                    <div class="comment-header">
+                        <img src="https://via.placeholder.com/40" alt="Avatar" class="comment-avatar">
+                        <div>
+                            <span class="comment-author">Mark Lee</span>
+                            <span class="comment-date">Jan 2, 2025</span>
+                        </div>
+                    </div>
+                    <p class="comment-text"><img src="images/avatar11.jpg" alt=""></p>
+                </div> -->
+                
+                <!-- Add more dummy comments for testing scrolling -->
+            </div>
+    
+            <!-- Comment Input Area -->
+            <div id="comment-input">
+                <textarea id="comment-textarea" placeholder="Write a comment..."></textarea>
+    
+                <!-- Image Upload Section -->
+                <div id="actions">
+                    <!-- Paperclip Icon for Upload -->
+                    <i class="fa-solid fa-paperclip" id="upload-icon"></i>
+                    <button id="submit-comment">Post Comment</button>
+                </div>
+                
+                <!-- Image Preview -->
+                <div id="image-preview">
+                    <img id="preview-image" src="" alt="Image Preview">
+                    <video id="preview-video" controls style="display: none;">
+                        <source id="video-source" src="">
+                        Your browser does not support the video tag.
+                    </video>
+                    <span id="remove-image">✖</span>
+                </div>
+            
+                <!-- Hidden File Input -->
+                <input type="file" id="comment-image" accept="image/png, image/jpeg, image/gif" hidden>
+    
+                
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <footer>
+        <div class="footer_socials">
+            <a href="https://youtube.com"><li class="uil uil-youtube"></li></a>
+            <a href="https://facebook.com"><li class="uil uil-facebook-f"></li></a>
+            <a href="https://instagram.com"><li class="uil uil-instagram-alt"></li></a>
+            <a href="https://linkedin.com"><li class="uil uil-linkedin"></li></a>
+            <a href="https://tiwtter.com"><li class="uil uil-twitter"></li></a>
+        </div>
+        <div class="container footer_container">
+            <article>
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="category-posts2.html">Artificial Intelligence</a></li>
+                    <li><a href="category-posts4.html">Stock Market</a></li>
+                    <li><a href="category-posts5.html">Renewable Energy</a></li>
+                    <li><a href="category-posts6.html">Electric Vehicles</a></li>
+                    <li><a href="category-posts9.html">Recycling E-waste</a></li>
+                    <li><a href="category-posts7.html">Sports</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="callnumbers.html">Call Numbers</a></li>
+                    <li><a href="email.html">Emails</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Blog</h4>
+                <ul>
+                    <li><a href="popular.html">Popular</a></li>
+                    <li><a href="index.html">Categories</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Permalinks</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </article>
+        </div>
+        <div class="footer_copyright">
+            <small>Copyright &copy; 2024 BlogMedia</small>
+        </div>
+    </footer>
+
+
+    <!-- <script src="./main.js"></script> -->
+<script src="./nav.js"></script>
+
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const postId = urlParams.get('id');
+
+const user = JSON.parse(localStorage.getItem('user')); // Ensure user data is stored
+const postsss = JSON.parse(localStorage.getItem('posts'));
+
+async function fetchAndDisplayPost() {
+  if (!postId) {
+    document.querySelector(".singlepost_container").innerHTML = `<p>Invalid Post ID OR Unavailable Post</p>`;
+    return;
+  }
+
+  // Check if post is in localStorage
+  const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+  let post = storedPosts.find((p) => p.id === postId);
+
+//   if (!post ) {
+    // Fetch post from the server if not found in localStorage
+    try {
+        // if (!user) throw new Error("Failed to fetch post");
+      const response = await fetch(`http://localhost:5000/get-post/${postId}`);
+      if (!response.ok) throw new Error("Failed to fetch post");
+
+      post = await response.json();
+    } catch (error) {
+      console.error("Error fetching post:", error);
+      document.querySelector(".singlepost_container").innerHTML = `<p>Failed to load the post. Please try again later.</p>`;
+      return;
+    }
+//   }
+
+  // Display the post
+  displayPost(post);
+}
+
+
+// Like button functionality
+// console.log(document.querySelector(".fa-thumbs-up"));
+
+async function handleLike() {
+    console.log('like-count');
+    
+    try {
+        if (!user) throw new Error("Guest user cannot like post!");
+        const response = await fetch(`http://localhost:5000/api/posts/${postId}/like`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId: user.uid }),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById('likes').innerText = data.likes; // Update likes count on UI
+
+            const postt = postsss.find(ele => ele.id === postId);
+            if (postt) {
+                postt.views = data.likes; // Update the views count for the specific post
+                const updatedPosts = postsss.map(ele => (ele.id === postId ? postt : ele)); // Update the array
+                localStorage.setItem('posts', JSON.stringify(updatedPosts)); 
+            }
+        } else {
+            const error = await response.json();
+            alert(error.message);
+        }
+    } catch (err) {
+        console.error("Error liking the post:", err);
+        alert("An error occurred while liking the post.");
+    }
+}
+
+// Increment view count when the post is loaded
+async function incrementViewCount() {
+    if (!user){
+        console.log("views not increases by guest user");
+        return;
+    }   
+    try {            
+        const response = await fetch(`http://localhost:5000/api/posts/${postId}/view`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId: user.uid }),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log('ccc',data);
+            
+            document.getElementById('views').innerText = data.views; // Update views count in UI
+
+            const postt = postsss.find(ele => ele.id === postId);
+            if (postt) {
+                postt.views = data.views; // Update the views count for the specific post
+                const updatedPosts = postsss.map(ele => (ele.id === postId ? postt : ele)); // Update the array
+                localStorage.setItem('posts', JSON.stringify(updatedPosts)); 
+            }
+        } else {
+            const error = await response.json();
+            console.error("Error incrementing views:", error.message);
+        }
+    } catch (err) {
+        console.error("Error incrementing views:", err);
+    }
+}
+
+
+function displayPost(post) {
+    console.log(post);
+    
+  const postContainer = document.querySelector(".singlepost_container");
+  postContainer.innerHTML = `
+    <h2>${post.title}</h2>
+    <div class="post_author">
+        <div class="post_author-avatar">
+            <img src="${post.authorAvatar || './images/default-avatar.jpg'}" alt="Author Avatar">
+        </div>
+        <div class="post_author-info">
+            <h5>By: ${post.authorName || "Unknown Author"}</h5>
+            <small>${new Date(post.created_at).toLocaleString()}</small>
+        </div>
+    </div>
+    <div class="singlepost_thumbnail">
+        <img src="${post.thumbnailURL || './images/default-thumbnail.jpg'}" alt="Post Thumbnail">
+    </div>
+    <div id="post-meta">
+        <div id="view-count"><i class="fa-solid fa-eye"></i><span id="views">${post.views}</span></div>
+        <div id="like-count"><i class="fa-solid fa-thumbs-up" onclick="handleLike()"></i><span id="likes">${post.likes}</span></div>
+        <div id="comment-count"><i class="fa-solid fa-comment-dots"></i><span id="comments">${post.commentsCount}</span></div>
+    </div>
+    ${post.content
+      .split("\n")
+      .map((paragraph) => `<p>${paragraph}</p>`)
+      .join("")}
+  `;
+}
+
+document.addEventListener("DOMContentLoaded", fetchAndDisplayPost);
+document.addEventListener("DOMContentLoaded", incrementViewCount);
+
+</script>
+
+<!-- comment section -->
+<script>
+
+const commentTextarea = document.getElementById("comment-textarea");
+const commentImageInput = document.getElementById("comment-image");
+const imagePreview = document.getElementById("image-preview");
+const previewImage = document.getElementById("preview-image");
+const previewVideo = document.getElementById("preview-video");
+const videoSource = document.getElementById("video-source");
+const removeImage = document.getElementById("remove-image");
+const submitComment = document.getElementById("submit-comment");
+const commentsList = document.getElementById("comments-list");
+
+
+submitComment.addEventListener("click", async () => {
+    const commentText = commentTextarea.value.trim();
+    const file = commentImageInput.files[0];
+    if (!commentText && !file) {
+        alert("Please enter a comment or upload an image.");
+        return;
+    }
+
+    if (!user) {
+        alert("Please Login to comment!")
+        return ;
+    }
+    try {
+        const formData = new FormData();
+        formData.append("userId", user.uid);
+        formData.append("username", user.username);
+        formData.append("userAvatarUrl", user.userAvatarUrl);
+        formData.append("commentText", commentText);
+        if (file) {
+            formData.append("file", file);
+        }
+
+        // Send the form data to the single backend API
+        const response = await fetch(`http://localhost:5000/api/posts/${postId}/comments`, {
+            method: "POST",
+            body: formData,
+        });
+
+        if (response.ok) {
+            const newComment = await response.json();
+            renderComment(newComment); // Dynamically add the new comment to the list
+            commentTextarea.value = "";
+            imagePreview.style.display = "none";
+        } else {
+            const error = await response.json();
+            alert(`Error: ${error.message}`);
+        }
+    } catch (err) {
+        console.error("Error submitting comment:", err);
+    }
+});
+
+
+
+// Render Comments
+function renderComment(comment) {
+    console.log(comment);
+    
+    const commentHTML = `
+        <div class="comment">
+            <div class="comment-header">
+                <img src="${comment.userAvatarUrl}" alt="Avatar" class="comment-avatar">
+                <div>
+                    <span class="comment-author">${comment.username}</span>
+                    <span class="comment-date">${new Date(comment.date).toLocaleString()}</span>
+                </div>
+            </div>
+            <p class="comment-text">${comment.text}
+                ${comment.imageURL 
+                    ? comment.imageURL.endsWith('.mp4') || comment.imageURL.endsWith('.mov') 
+                        ? `<br><video src="${comment.imageURL}" controls class="comment-video"></video>` 
+                        : `<br><img src="${comment.imageURL}" alt="Comment Image" class="comment-image">`
+                    : ""}
+            </p>
+            
+        </div>
+    `;
+    commentsList.insertAdjacentHTML("beforeend", commentHTML);
+}
+
+// Fetch and Render Existing Comments
+async function fetchComments() {
+    try {
+        const response = await fetch(`http://localhost:5000/api/posts/${postId}/comments`);
+        const comments = await response.json();
+        document.getElementById('commentCount').innerText = comments.length || 0;
+        comments.forEach(renderComment);
+    } catch (err) {
+        console.error("Error fetching comments:", err);
+    }
+}
+
+
+
+
+document.getElementById('upload-icon').addEventListener('click', () => {
+    // Trigger the hidden file input
+    document.getElementById('comment-image').click();
+});
+
+// preview media
+document.getElementById('comment-image').addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    const previewImage = document.getElementById('preview-image');
+    const previewVideo = document.getElementById('preview-video');
+    const videoSource = document.getElementById('video-source');
+    const previewContainer = document.getElementById('image-preview');
+
+    if (file) {
+        const fileType = file.type;
+
+        // Reset both previews
+        previewImage.style.display = 'none';
+        previewVideo.style.display = 'none';
+
+        if (fileType.startsWith('image/')) {
+            // If file is an image
+            const reader = new FileReader();
+            reader.onload = () => {
+                previewImage.src = reader.result;
+                previewImage.style.display = 'block';
+                previewContainer.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else if (fileType.startsWith('video/')) {
+            // If file is a video
+            const videoURL = URL.createObjectURL(file);
+            videoSource.src = videoURL;
+            previewVideo.load();
+            previewVideo.style.display = 'block';
+            previewContainer.style.display = 'block';
+        } else {
+            alert('Unsupported file type. Please upload an image or video.');
+        }
+    }
+});
+
+// Remove media preview
+document.getElementById('remove-image').addEventListener('click', () => {
+    document.getElementById('comment-image').value = '';
+    document.getElementById('image-preview').style.display = 'none';
+    document.getElementById('preview-image').src = '';
+    document.getElementById('video-source').src = '';
+    document.getElementById('preview-video').load(); // Reset video
+});
+
+
+window.addEventListener("DOMContentLoaded", fetchComments);
+
+</script>
+
+</body>
+</html>

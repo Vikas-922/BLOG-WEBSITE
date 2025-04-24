@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog WebApp</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://kit.fontawesome.com/ca49e0f9c1.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="overlay" style="display: none;">
+        <i class="fa-solid fa-spinner fa-spin" style="font-size: 5rem;"></i>
+      </div>
+
+    <section class="form_section">
+        <div class="container form_section-container">
+          <h2>Sign Up</h2>
+          <div class="alert_message error" id="error-message" style="display:none;"></div>
+          <div class="alert_message success" id="success-message" style="display:none;"></div>
+          <form id="signup-form" enctype="multipart/form-data">
+            <input type="text" name="firstname" placeholder="First Name" required>
+            <input type="text" name="lastname" placeholder="Last Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+            <div class="form_control">
+              <label for="avatar">User Avatar</label>
+              <input type="file" id="avatar" name="avatar">
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+            <small>Already have an account? <a href="signin.html">Sign In</a></small>
+          </form>
+        </div>
+      </section>
+
+
+
+
+
+<script>
+    const form = document.getElementById("signup-form");
+    const errorMessage = document.getElementById("error-message");
+    const successMessage = document.getElementById("success-message");
+    
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        document.getElementById('overlay').style.display = 'flex';
+        
+        const formData = new FormData(form);
+    
+        // Validate passwords
+        const password = (formData.get("password")).trim();
+        const confirmPassword = (formData.get("confirmPassword")).trim();
+        if (!isPasswordValid(password, confirmPassword)) return;
+    
+        try {
+        const response = await fetch("http://localhost:5000/signup", {
+            method: "POST",
+            body: formData,
+        });
+    
+        const result = await response.json();
+        console.log(result);
+        
+        if (response.ok) {
+            successMessage.style.display = "block";
+            successMessage.textContent = result.message;
+            errorMessage.style.display = "none";
+            form.reset();
+            setTimeout(() => {
+                window.location.href = "./index.html"; // Update the URL as per your project structure
+            }, 3000);
+        } else {
+            throw new Error(result.message);
+        }
+        } catch (error) {
+        errorMessage.style.display = "block";
+        errorMessage.textContent = error.message;
+        successMessage.style.display = "none";
+        }
+        
+        document.getElementById('overlay').style.display = 'none';
+    });
+
+
+
+// ====================================================
+
+    function isPasswordValid(password,confirmPassword) {
+    if (password.length < 6) {
+      showErrorMsg("Password must be at least 6 characters long.");
+      return false;
+    }
+    if (password !== confirmPassword) {
+      showErrorMsg("Passwords do not match.")
+      return false;
+    }
+
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    console.log('password=> ',password);    
+    if (!passwordPattern.test(password)) {
+      showErrorMsg("Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character. @$!%*?&");
+      return false;
+    }
+
+    return true;
+}
+
+
+function showErrorMsg(msg) {
+  successMessage.style.display = "none";  
+  errorMessage.textContent = msg;
+  errorMessage.style.display = "block";  
+  focusOn(errorMessage);
+}
+
+function showSuccessMsg(msg) {
+  errorMessage.style.display = "none";
+  successMessage.textContent = msg;
+  successMessage.style.display = "block";
+  focusOn(successMessage);
+}
+
+function clearMsg() {
+   // Clear previous messages
+  errorMessage.style.display = "none";
+  successMessage.style.display = "none";
+}
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog WebApp - About</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Dark Theme Styles for about.html */
+        
+
+        .about_page_container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--color-gray-700); /* Use variable from style.css */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker shadow */
+        }
+
+        .about_page_container h1 {
+            text-align: center;
+            color: var(--color-white); /* Use variable from style.css */
+            font-size: 2rem;
+        }
+
+        .about_page_container p {
+            line-height: 1.7;
+            margin-bottom: 0.7rem;
+            color: var(--color-gray-100); /* Use variable from style.css */
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        .about_page_container .highlight {
+            font-weight: 600;
+            color: var(--color-light-blue); /* Use variable from style.css */
+        }
+
+        .about_page_container .section-heading {
+            font-size: 1.4rem;
+            color: var(--color-lighter-blue); /* Lighter heading for sub-sections */
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .about_page_container ul {
+            list-style-type: disc;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about_page_container li {
+            margin-bottom: 0.5rem;
+            color: var(--color-gray-100); /* Use variable from style.css */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .about_page_container {
+                padding: 1rem;
+            }
+
+            .about_page_container h1 {
+                font-size: 2rem;
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav_container">
+            <a href="index.html" class="nav_logo">BlogMedia</a>
+            <ul class="nav_items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li class="active_navlink"><a href="about.html">About</a></li>
+                <li><a href="category-posts.html?category=Artificial Intelligence">Categories</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li class="nav_profile" style="display: none;">
+                    <div class="avatar_container">
+                        <div class="avatar">
+                            <img src="./images/avatar1.jpg" alt="User Avatar">
+                        </div>
+                    </div>
+                    <div class="username_cnt">
+                        <span></span>
+                    </div>
+                    <ul class="nav_profile_popup">
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="logout.html">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open_nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close_nav-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+
+    <section class="about_page_section">
+        <div class="container about_page_container">
+            <h1>About BlogMedia</h1>
+            <p>
+                Welcome to <span class="highlight">BlogMedia</span>, where creativity meets insight in the digital age. Our blog is a vibrant hub for forward-thinking individuals seeking fresh perspectives and engaging content. We are a passionate team of writers, analysts, and visionaries dedicated to exploring the latest trends, uncovering hidden gems, and sparking thoughtful conversations.
+            </p>
+            <p>
+                Our mission is to provide you with a curated blend of thought-provoking articles, expert opinions, and captivating stories that not only inform but inspire. Whether you're here to stay ahead of the curve, dive into niche interests, or simply enjoy some enlightening reads, BlogMedia is your go-to destination for modern, meaningful content. Join us on this journey of discovery and let’s navigate the ever-evolving world together.
+            </p>
+            <p class="section-heading">Our Approach</p>
+            <p>
+                At BlogMedia, we redefine the blogging experience with a fresh approach to digital storytelling. Our platform is crafted for curious minds who crave more than just surface-level content. We’re a dynamic collective of writers, thinkers, and innovators who thrive on delving into diverse topics with depth and clarity.
+            </p>
+            <p>
+                Our goal is to challenge conventional perspectives and offer you a rich tapestry of articles that spark curiosity and conversation. From groundbreaking trends and expert insights to personal narratives and cultural explorations, our content is designed to resonate with the modern reader. Dive into a world where every post is an invitation to explore, learn, and grow with BlogMedia as your guide.
+            </p>
+            <p class="section-heading">What We Offer</p>
+            <ul>
+                <li><span class="highlight">In-depth Articles:</span> Explore a wide range of topics with articles that go beyond the surface.</li>
+                <li><span class="highlight">Expert Insights:</span> Get opinions and analyses from leading voices in various fields.</li>
+                <li><span class="highlight">Trend Spotting:</span> Stay updated on the latest trends shaping our world.</li>
+                <li><span class="highlight">Inspiring Stories:</span> Discover stories that captivate, move, and inspire you.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer_socials">
+            <a href="https://youtube.com"><li class="uil uil-youtube"></li></a>
+            <a href="https://facebook.com"><li class="uil uil-facebook-f"></li></a>
+            <a href="https://instagram.com"><li class="uil uil-instagram-alt"></li></a>
+            <a href="https://linkedin.com"><li class="uil uil-linkedin"></li></a>
+            <a href="https://tiwtter.com"><li class="uil uil-twitter"></li></a>
+        </div>
+        <div class="container footer_container">
+            <article>
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="category-posts2.html">Artificial Intelligence</a></li>
+                    <li><a href="category-posts4.html">Stock Market</a></li>
+                    <li><a href="category-posts5.html">Renewable Energy</a></li>
+                    <li><a href="category-posts6.html">Electric Vehicles</a></li>
+                    <li><a href="category-posts9.html">Recycling E-waste</a></li>
+                    <li><a href="category-posts7.html">Sports</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Call Numbers</a></li>
+                    <li><a href="contact.html">Emails</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Blog</h4>
+                <ul>
+                    <li><a href="popular.html">Popular</a></li>
+                    <li><a href="index.html">Categories</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Permalinks</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </article>
+        </div>
+        <div class="footer_copyright">
+            <small>Copyright &copy; 2024 BlogMedia</small>
+        </div>
+    </footer>
+
+
+
+    <script src="./nav.js"></script>
+
+</body>
+</html>

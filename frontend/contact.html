@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog WebApp</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-page-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0.5rem 2rem 2rem 2rem;
+            background-color: var(--color-gray-700);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            color: var(--color-gray-100); /* Light text color */
+            line-height: 1.6;
+        }
+        .contact-page-container h1{
+            color: var(--color-white);
+            text-align: center;
+        }
+        .contact-page-container p{
+            text-align: justify;
+        }
+        .contact-info{
+            margin-top: 1rem;
+        }
+        .contact-info li{
+            margin-bottom: 1rem;
+        }
+        .contact-info a{
+            color: var(--color-light-blue);
+            text-decoration: none;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <nav>        
+        <div class="container nav_container">
+            <a href="index.html" class="nav_logo">BlogMedia</a>
+            <ul class="nav_items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="category-posts.html?category=Artificial Intelligence">Categories</a></li>
+                <li class="active_navlink"><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li class="nav_profile" style="display: none;">
+                    <div class="avatar_container">
+                        <div class="avatar">
+                            <img src="./images/avatar1.jpg" alt="User Avatar">
+                        </div>
+                    </div>
+                    <div class="username_cnt">
+                        <span></span>
+                    </div>
+                    <ul class="nav_profile_popup">
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="logout.html">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button id="open_nav-btn"><i class="uil uil-bars"></i></button>
+            <button id="close_nav-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+
+    <section class="contact-page">
+        <div class="container contact-page-container">
+            <h1>Contact Us</h1>
+            <p>We're excited to hear from you!  At BlogMedia, we value every connection and are here to support your needs and inquiries. Whether you have a question about our content, need assistance with one of our services, or just want to share your thoughts and feedback, don’t hesitate to reach out. Our dedicated team is ready to provide prompt and helpful responses to ensure that your experience with us is seamless and enjoyable.  You can contact us through:</p>
+
+            <ul class="contact-info">
+                <li><i class="uil uil-phone"></i> <a href="tel:+1234567890">1234567890</a></li>
+                <li><i class="uil uil-envelope"></i> <a href="mailto:abc1@gmail.com">abc1@gmail.com</a></li>
+            </ul>
+            <p>For more immediate assistance or if you prefer a personal touch, feel free to give us a call during our business hours. We’re committed to offering exceptional customer service and look forward to engaging with our community. Your insights and inquiries are important to us, and we strive to address them with the utmost attention and care. Thank you for being a part of BlogMedia, and we can’t wait to connect with you soon!</p>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer_socials">
+            <a href="https://youtube.com"><li class="uil uil-youtube"></li></a>
+            <a href="https://facebook.com"><li class="uil uil-facebook-f"></li></a>
+            <a href="https://instagram.com"><li class="uil uil-instagram-alt"></li></a>
+            <a href="https://linkedin.com"><li class="uil uil-linkedin"></li></a>
+            <a href="https://tiwtter.com"><li class="uil uil-twitter"></li></a>
+        </div>
+        <div class="container footer_container">
+            <article>
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="category-posts2.html">Artificial Intelligence</a></li>
+                    <li><a href="category-posts4.html">Stock Market</a></li>
+                    <li><a href="category-posts5.html">Renewable Energy</a></li>
+                    <li><a href="category-posts6.html">Electric Vehicles</a></li>
+                    <li><a href="category-posts9.html">Recycling E-waste</a></li>
+                    <li><a href="category-posts7.html">Sports</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="about.html">Call Numbers</a></li>
+                    <li><a href="about.html">Emails</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Blog</h4>
+                <ul>
+                    <li><a href="popular.html">Popular</a></li>
+                    <li><a href="index.html">Categories</a></li>
+                </ul>
+            </article>
+            <article>
+                <h4>Permalinks</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </article>
+        </div>
+        <div class="footer_copyright">
+            <small>Copyright &copy; 2024 BlogMedia</small>
+        </div>
+    </footer>
+
+    <script src="./main.js"></script>
+    <!-- <script src="./main.js"></script> -->
+<script src="./nav.js"></script>
+</body>
+</html>
