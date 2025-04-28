@@ -1,6 +1,6 @@
 # BLOG-WEBSITE
 
-A dynamic full-stack blog platform where users can **create**, **manage**, **like**, **comment**, **share** blogs, and explore content by **category** and **popularity**.  
+A full-stack blog website where users can **create**, **manage**, **like**, **comment**, **share** blogs, and explore content by **category** and **popularity**.  
 Admins can **manage users**, **posts**, and **categories** to keep the platform organized and updated.
 
 ---
@@ -16,7 +16,7 @@ Admins can **manage users**, **posts**, and **categories** to keep the platform 
 - **Engagement Actions**:
   - **Like** blogs
   - **Comment** on blogs (supports **text**, **audio**, **video**, **images** with file size restrictions)
-  - **Share** blogs easily
+  - **Share** blogs 
 
 - **Comment Media Uploads**:
   - Comments can include:
@@ -35,7 +35,7 @@ Admins can **manage users**, **posts**, and **categories** to keep the platform 
     - **Data Science**
     - and more...
 
-- **Smart Search and Categorization**:
+- **Search and Categorization**:
   - **Search** specific posts easily
   - **Filter** posts based on categories
   - **View popular blogs** sorted by **views**, **likes**, or **comments**
@@ -56,4 +56,4 @@ Admins can **manage users**, **posts**, and **categories** to keep the platform 
   - **Cloudinary** (for image, audio, video uploads)
 
 - **Authentication & Database**:
-  - **Firebase** (Authentication and Database)
+  - **Firebase** 
