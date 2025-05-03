@@ -115,7 +115,7 @@
     // Fetch category data and prefill the form
     async function fetchCategory() {
         try {
-            const response = await fetch(`http://localhost:5000/categories/${categoryId}`);
+            const response = await fetch(`https://blog-website-beta-wine.vercel.app/categories/${categoryId}`);
             const category = await response.json();
 
             // Prefill the form fields
@@ -140,7 +140,7 @@
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/edit-category/${categoryId}`, {
+            const response = await fetch(`https://blog-website-beta-wine.vercel.app/edit-category/${categoryId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title, description }),

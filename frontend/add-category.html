@@ -125,7 +125,7 @@
         }
 
         try {
-            const response = await fetch('http://localhost:5000/add-category', {
+            const response = await fetch('https://blog-website-beta-wine.vercel.app/add-category', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title, description }),

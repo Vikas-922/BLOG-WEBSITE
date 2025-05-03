@@ -6,7 +6,7 @@
     <title>Modern Blog WebApp</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <script src="https://kit.fontawesome.com/ca49e0f9c1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -208,7 +208,7 @@ async function fetchPosts() {
   postsSection.style.display = "none";
 
   try {
-    const response = await fetch("http://localhost:5000/get-publicPosts");
+    const response = await fetch("https://blog-website-beta-wine.vercel.app/get-publicPosts");
     if (!response.ok) throw new Error("Failed to fetch posts");
 
     const posts = await response.json();

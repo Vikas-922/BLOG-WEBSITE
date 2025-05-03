@@ -170,7 +170,7 @@
 
     // Fetch categories from the backend and populate the table
     async function loadCategories() {
-        const response = await fetch('http://localhost:5000/categories');
+        const response = await fetch('https://blog-website-beta-wine.vercel.app/categories');
         const categories = await response.json();
 
         const categoriesList = document.getElementById('categories-list');
@@ -191,7 +191,7 @@
     async function deleteCategory(id) {
         if (confirm('Are you sure you want to delete this category?')) {
             try {
-                const response = await fetch(`http://localhost:5000/delete-category/${id}`, {
+                const response = await fetch(`https://blog-website-beta-wine.vercel.app/delete-category/${id}`, {
                     method: 'DELETE',
                 });
 
