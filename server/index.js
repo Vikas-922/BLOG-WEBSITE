@@ -22,6 +22,9 @@ app.use(bodyParser.json());
 app.use(fileUpload({ useTempFiles: true }));
 
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the API!");
+});
 
 app.post("/signup", signUp);
 
