@@ -9,10 +9,12 @@ import { editUserById, getAllUsers, getUserById, deleteUserById } from "./contol
 import { addCategory, getCategoriesTitle, deleteCategoryById, editCategoryById, getCategoryById, getCategories } from "./contollers/categories.js";
 import { getCommentsByPostId, increment_View_ByPostId, increment_Like_ByPostId, addComment_updatePost_ByPostId ,deleteCommentById } from "./contollers/interactions.js";
 import { getProfileById, updateProfileById } from "./contollers/profile.js";
+import dotenv from "dotenv";
 
+dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
