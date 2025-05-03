@@ -212,7 +212,7 @@ async function fetchPosts() {
     if (!response.ok) throw new Error("Failed to fetch posts");
 
     const posts = await response.json();
-    console.log(posts);
+    // console.log(posts);
     
     localStorage.setItem("posts", JSON.stringify(posts));
 
@@ -236,7 +236,7 @@ async function fetchPosts() {
 document.querySelector("#search-form")
 .addEventListener("submit",function handleSearch(event) {
     event.preventDefault();
-    console.log('searchsearchsearch');
+    // console.log('searchsearchsearch');
     
     const searchInput = document.querySelector("#search-input").value.toLowerCase().trim();
     // const posts = getPostsFromLocalStorage();
@@ -281,7 +281,7 @@ function loadMorePosts(isLoadTillCurrentIndex=false) {
     const remainingPosts = globalPosts.slice(currentIndex, currentIndex + postsPerPage);
     displayPosts(remainingPosts);
     if(!isLoadTillCurrentIndex) currentIndex += postsPerPage;
-    console.log('currentIndex',currentIndex,'isLoadTillCurrentIndex',isLoadTillCurrentIndex);
+    // console.log('currentIndex',currentIndex,'isLoadTillCurrentIndex',isLoadTillCurrentIndex);
 
     // Hide "See More" button if all posts are loaded
     if (currentIndex >= globalPosts.length) {

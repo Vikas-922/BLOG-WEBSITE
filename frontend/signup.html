@@ -63,7 +63,6 @@
         });
     
         const result = await response.json();
-        console.log(result);
         
         if (response.ok) {
             successMessage.style.display = "block";
@@ -100,7 +99,6 @@
     }
 
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    console.log('password=> ',password);    
     if (!passwordPattern.test(password)) {
       showErrorMsg("Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character. @$!%*?&");
       return false;

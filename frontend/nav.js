@@ -15,7 +15,6 @@ const dashboardEle = navItems.querySelector('a[href="dashboard.html"]');
 // navprofile have to show or not
 function updateNavbar() {
     const userData = JSON.parse(localStorage.getItem("user"));
-    console.log(userData);    
 
     if (userData && userData.username) {
         // Show logged-in user's email

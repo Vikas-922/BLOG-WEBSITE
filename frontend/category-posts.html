@@ -269,30 +269,10 @@
 <script>
 
 document.addEventListener("DOMContentLoaded", () => {
-//   const toggleButton = document.querySelector(".dropdown-toggle");
-//   const dropdown = document.querySelector(".dropdown");
-
-//   toggleButton.addEventListener("click", () => {
-//     const isOpen = dropdown.style.display === "block";
-//     dropdown.style.display = isOpen ? "none" : "block";
-//   });
-
-//   // Close dropdown if clicking outside
-//   document.addEventListener("click", (event) => {
-//     if (!dropdown.contains(event.target) && !toggleButton.contains(event.target)) {
-//       dropdown.style.display = "none";
-//     }
-//   });
-
-    document.addEventListener("click", function (event) {
-        console.log('AAAAAAAAAA');
-        
+    document.addEventListener("click", function (event) {        
         const dropdown = document.querySelector(".dropdown");
-        if (event.target.closest(".dropdown-toggle")) {
-            console.log('SSSSSSSSS');
-            
+        if (event.target.closest(".dropdown-toggle")) {            
             dropdown.classList.add("show");
-
         } else {
             dropdown.classList.remove("show");
         }
@@ -332,11 +312,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Fetch posts by category ID
 async function fetchPostsByCategory(category_title) {
     try {
-        console.log('category_title',category_title);
-        
         const response = await fetch(`https://blog-website-beta-wine.vercel.app/get-posts/${category_title}`);
         const posts = await response.json();
-        console.log(posts);
         postsContainer.innerHTML = ``;
         displayPosts(posts);
     } catch (error) {
@@ -395,9 +372,7 @@ async function fetchPostsByCategory(category_title) {
         // console.log('remainingPosts',remainingPosts);
         
         displayPosts(remainingPosts);
-        if(!isLoadTillCurrentIndex) currentIndex += postsPerPage;
-        console.log('currentIndex',currentIndex,'isLoadTillCurrentIndex',isLoadTillCurrentIndex);        
-    
+        if(!isLoadTillCurrentIndex) currentIndex += postsPerPage;    
         // Hide "See More" button if all posts are loaded
         if (currentIndex >= globalPosts.length) {
             seeMoreButton.style.display = "none";

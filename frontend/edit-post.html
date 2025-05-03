@@ -185,11 +185,6 @@ async function loadPostForEditing() {
     document.querySelector('label[for="is_featured"]').style.visibility = userData.dashboardPage === "dashboard.html"
                                                                   ? 'hidden' : 'visible';
 
-//////////>>>>>>
-    // Convert UTC created_at to IST and set the value
-    // const istDate = convertToIST(post.created_at); // Convert UTC to IST
-    // document.querySelector('input[name="created_at"]').value = istDate.slice(0, 16); // Set in input
-
 
     // Store postId for the update
     document.querySelector("#editPostForm").dataset.postId = postId;
@@ -208,17 +203,6 @@ async function handleUpdatePost(event) {
   const postId = form.dataset.postId;
   const formData = new FormData(form);
 
-  // ENABLE TO EDIT POST'S CREATED DATE
-////////////////DELETE/////////////DELETE/////////////////DELETE
-//   const createdAt = document.querySelector('input[name="created_at"]').value; // Get the date from input field
-//  // Store original date when loading the post
-
-//   // If the created_at value is the same, do not append it to the formData
-  
-//     const utcDate = convertToUTC(createdAt);
-//     formData.set("created_at", utcDate); // Set the converted UTC date
-  
-//////////////DELETE//////////DELETE//////////////////DELETE/////////////////
   // Retrieve user details from local storage
   const user = JSON.parse(localStorage.getItem("user"));
   if (!user || !user.uid) {
@@ -228,7 +212,6 @@ async function handleUpdatePost(event) {
   }
 
   formData.append("uid", user.uid);
-  console.log('formData.isFeatured',document.querySelector('input[name="isFeatured"]').checked);
   formData.set("isFeatured",document.querySelector('input[name="isFeatured"]').checked == true ? true : false);
   
 
@@ -237,7 +220,6 @@ async function handleUpdatePost(event) {
       method: "PUT",
       body: formData,
     });
-    console.log(response.status);
     
     if (!response.ok) {
       if (response.status === 403) {

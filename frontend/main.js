@@ -1,27 +1,3 @@
-// const navItems = document.querySelector('.nav_items');
-// const openNavBtn = document.querySelector('#open_nav-btn');
-// const closeNavBtn = document.querySelector('#close_nav-btn');
-
-
-// const openNav = () => {
-//     // navItems.style.display = 'flex';
-//     navItems.style.transform = 'translateX(0)'; // Slide in from the right
-//     openNavBtn.style.display = 'none';
-//     navItems.style.background = 'green';
-//     closeNavBtn.style.display = 'inline-block';
-// }
-
-// const closeNav = () => {
-//     // navItems.style.display = 'none';
-//     navItems.style.transform = 'translateX(100%)'; // Slide out to the right
-//     openNavBtn.style.display = 'inline-block';
-//     closeNavBtn.style.display = 'none';
-// }
-
-// openNavBtn.addEventListener('click', openNav);
-// closeNavBtn.addEventListener('click', closeNav);
-
-
 
 
 const sidebar = document.querySelector('aside');

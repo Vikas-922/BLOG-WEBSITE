@@ -179,12 +179,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     formData.append("userId", userId);
-    console.log(formData.get('avatar'));
-    
 
     // // Clear previous messages
     clearMsg();
-    console.log(formData);
         
     document.getElementById('overlay').style.display = 'flex';
 
@@ -231,7 +228,6 @@ function isPasswordValid(password,confirmPassword) {
     }
 
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    console.log('password=> ',password);    
     if (!passwordPattern.test(password)) {
       showErrorMsg("Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character. @$!%*?&");
       return false;

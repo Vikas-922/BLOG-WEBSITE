@@ -217,8 +217,7 @@ async function fetchPosts() {
     // Show real content sections
     postsSection.style.display = "block";
     featuredDiv.style.display = "block";
-
-    console.log(posts);    
+ 
     filterPosts(posts);
     // displayPosts(posts);
     initalPostsLoad();
@@ -257,8 +256,6 @@ function loadMorePosts(isLoadTillCurrentIndex=false) {
     const remainingPosts = normalPosts.slice(currentIndex, currentIndex + postsPerPage);
     displayPosts(remainingPosts);
     if(!isLoadTillCurrentIndex) currentIndex += postsPerPage;
-    console.log('currentIndex',currentIndex,'isLoadTillCurrentIndex',isLoadTillCurrentIndex);
-    
 
     // Hide "See More" button if all posts are loaded
     if (currentIndex >= normalPosts.length) {

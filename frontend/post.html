@@ -240,8 +240,6 @@ async function fetchAndDisplayPost() {
   const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
   let post = storedPosts.find((p) => p.id === postId);
 
-//   if (!post ) {
-    // Fetch post from the server if not found in localStorage
     try {
         // if (!user) throw new Error("Failed to fetch post");
       const response = await fetch(`https://blog-website-beta-wine.vercel.app/get-post/${postId}`);
@@ -253,18 +251,14 @@ async function fetchAndDisplayPost() {
       document.querySelector(".singlepost_container").innerHTML = `<p>Failed to load the post. Please try again later.</p>`;
       return;
     }
-//   }
 
   // Display the post
   displayPost(post);
 }
 
 
-// Like button functionality
-// console.log(document.querySelector(".fa-thumbs-up"));
 
 async function handleLike() {
-    console.log('like-count');
     
     try {
         if (!user) throw new Error("Guest user cannot like post!");
@@ -300,7 +294,6 @@ async function handleLike() {
 // Increment view count when the post is loaded
 async function incrementViewCount() {
     if (!user){
-        console.log("views not increases by guest user");
         return;
     }   
     try {            
@@ -314,7 +307,6 @@ async function incrementViewCount() {
 
         if (response.ok) {
             const data = await response.json();
-            console.log('ccc',data);
             
             document.getElementById('views').innerText = data.views; // Update views count in UI
 
@@ -335,7 +327,6 @@ async function incrementViewCount() {
 
 
 function displayPost(post) {
-    console.log(post);
     
   const postContainer = document.querySelector(".singlepost_container");
   postContainer.innerHTML = `
@@ -484,10 +475,6 @@ async function handleCommentdelete(commentId, userId) {
 
     if (response.ok) {
       alert("Comment deleted successfully");
-      console.log(`${data.commentId}`);
-      
-    //   console.log(commentsList.getElementById(`${data.commentId}`));      
-    // commentsList.querySelector(`#${data.commentId}`).style.display = 'none';
     
       document.getElementById(data.commentId).remove();
       document.getElementById('commentCount').innerText = --commentLength;
@@ -510,7 +497,6 @@ async function handleCommentdelete(commentId, userId) {
 
 // Render Comments
 function renderComment(comment) {
-    console.log(comment);
     
     const commentHTML = `
         <div class="comment" id= "${comment.id}">

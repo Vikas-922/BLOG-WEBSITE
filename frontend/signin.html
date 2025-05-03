@@ -73,29 +73,16 @@ form.addEventListener("submit", async (e) => {
                 dashboardPage: data.user.dashboardPage
             }));
 
-            // Display success message
-            // alertMessage.style.display = "block";
-            // alertMessage.className = "alert_message success";
-            // alertMessage.textContent = data.message;
-            showMessage(data.message);
-            console.log(data);            
+            showMessage(data.message);     
 
             // Redirect to dashboard or home page
             setTimeout(() => {
                 window.location.href = "./index.html"; // Update the URL as per your project structure
             }, 2000);
         } else {
-            // Display error message
-            // alertMessage.style.display = "block";
-            // alertMessage.className = "alert_message error";
-            // alertMessage.textContent = data.message;
             showMessage(data.message,'error');
         }
     } catch (error) {
-        // Handle unexpected errors
-        // alertMessage.style.display = "block";
-        // alertMessage.className = "alert_message error";
-        // alertMessage.textContent = "Something went wrong. Please try again.";
         showMessage("Something went wrong. Please try again.",'error');
         console.error("Login Error:", error);
     }    

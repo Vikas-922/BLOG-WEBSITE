@@ -181,7 +181,6 @@ async function fetchPosts() {
     if (!response.ok) throw new Error("Failed to fetch posts");
 
     const posts = await response.json();
-    console.log(posts);
     
     localStorage.setItem("posts", JSON.stringify(posts));
 
@@ -190,9 +189,6 @@ async function fetchPosts() {
     postsSection.style.display = "block";
 
     initalPostsLoad();
-    // console.log(posts);
-    
-    // displayPosts(posts);   ///////
   } catch (error) {
     console.error("Error fetching posts:", error);
     postsContainer.innerHTML = `<p>Failed to load posts. Please try again later.</p>`;
@@ -214,7 +210,6 @@ function loadMorePosts(isLoadTillCurrentIndex=false) {
     const nextPosts = globalPosts.slice(currentIndex, currentIndex + postsPerPage);
     displayPosts(nextPosts);
     if(!isLoadTillCurrentIndex) currentIndex += postsPerPage;
-    console.log('currentIndex',currentIndex,'isLoadTillCurrentIndex',isLoadTillCurrentIndex);
 
     // Hide "See More" button if all posts are loaded
     if (currentIndex >= globalPosts.length) {
