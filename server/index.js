@@ -1,17 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
-// import admin from 'firebase-admin';
 import cors from "cors";
-import fs from 'fs';
-import bcrypt from "bcrypt";
 import fileUpload from "express-fileupload";
-import { auth, db } from "./config/firebase.js";
-import { collection, query, where, getDocs, setDoc, doc, getDoc,updateDoc,increment, deleteDoc,arrayUnion } from "firebase/firestore";
-import cloudinary from "./config/cloudinaryConfig.js";
 import {signUp, login} from "./contollers/auth.js";
-
 import { addPost, getPostById, getPostsByCategoryTitle, getPublicPosts, getPosts, deletePostById, updatePostById} from "./contollers/posts.js";
-import { deleteCloudinaryFile, unlinkTempFile, isAdmin } from "./utils/helper.js";
+import { isAdmin } from "./utils/helper.js";
 import { editUserById, getAllUsers, getUserById, deleteUserById } from "./contollers/users.js";
 import { addCategory, getCategoriesTitle, deleteCategoryById, editCategoryById, getCategoryById, getCategories } from "./contollers/categories.js";
 import { getCommentsByPostId, increment_View_ByPostId, increment_Like_ByPostId, addComment_updatePost_ByPostId ,deleteCommentById } from "./contollers/interactions.js";
