@@ -26,7 +26,6 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(fileUpload({ useTempFiles: true }));
 
-
 app.get("/", (req, res) => {
   res.send("Welcome to the API!");
 });
